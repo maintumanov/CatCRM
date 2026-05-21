@@ -124,12 +124,13 @@ if (!is_array($currentConfig)) $currentConfig = [];
 
 <style>
 .sortable-list { min-height: 100px; }
-.field-item { background: #fff; transition: all 0.2s; }
+.field-item { background: #fff; transition: all 0.2s; user-select: none; }
 .field-item:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-.drag-handle { cursor: move; font-size: 1.2rem; color: #6c757d; user-select: none; }
-.sortable-list .field-item.dragging { opacity: 0.5; background: #f8f9fa; }
-.sortable-list .field-item.over { border: 2px dashed #0d6efd; }
-.cursor-move { cursor: move; }
+.drag-handle { cursor: grab; font-size: 1.2rem; color: #6c757d; user-select: none; }
+.drag-handle:active { cursor: grabbing; }
+.sortable-list .field-item.dragging { opacity: 0.4; background: #e9ecef; border: 2px dashed #0d6efd !important; }
+.sortable-list .field-item.over { border: 2px dashed #0d6efd; background: #f0f7ff; }
+.cursor-move { cursor: grab; }
 </style>
 
 <script>
@@ -180,7 +181,7 @@ return;
 }
 
 container.innerHTML = fields.map((field, index) => `
-<div class="field-item card mb-2 border" data-index="${index}">
+<div class="field-item card mb-2 border" data-index="${index}" draggable="true">
 <div class="card-body py-2 px-3 d-flex align-items-center">
 <span class="drag-handle me-3 cursor-move" title="Перетащить">☰</span>
 <div class="flex-grow-1">
@@ -205,23 +206,35 @@ initSortable();
 function initSortable() {
 const list = document.getElementById('fieldsList');
 let draggedItem = null;
+let draggedIndex = null;
 
 list.addEventListener('dragstart', function(e) {
 draggedItem = e.target.closest('.field-item');
+if (draggedItem) {
+draggedIndex = parseInt(draggedItem.dataset.index);
 setTimeout(() => draggedItem.classList.add('dragging'), 0);
+e.dataTransfer.effectAllowed = 'move';
+e.dataTransfer.setData('text/plain', draggedIndex);
+}
 });
 
 list.addEventListener('dragend', function(e) {
 if (draggedItem) {
 draggedItem.classList.remove('dragging');
 draggedItem = null;
+draggedIndex = null;
+// Снимаем классы over со всех элементов
+list.querySelectorAll('.field-item').forEach(item => item.classList.remove('over'));
 }
 });
 
 list.addEventListener('dragover', function(e) {
 e.preventDefault();
+e.dataTransfer.dropEffect = 'move';
 const afterElement = getDragAfterElement(list, e.clientY);
 const draggable = document.querySelector('.dragging');
+if (!draggable) return;
+
 if (afterElement == null) {
 list.appendChild(draggable);
 } else {
@@ -229,10 +242,33 @@ list.insertBefore(draggable, afterElement);
 }
 });
 
+list.addEventListener('dragenter', function(e) {
+const item = e.target.closest('.field-item');
+if (item && !item.classList.contains('dragging')) {
+item.classList.add('over');
+}
+});
+
+list.addEventListener('dragleave', function(e) {
+const item = e.target.closest('.field-item');
+if (item) {
+item.classList.remove('over');
+}
+});
+
 list.addEventListener('drop', function(e) {
+e.preventDefault();
+const droppedItem = document.querySelector('.dragging');
+if (!droppedItem) return;
+
+// Получаем новый порядок из DOM
 const items = list.querySelectorAll('.field-item');
-const newOrder = Array.from(items).map(item => parseInt(item.dataset.index));
-const newFields = newOrder.map(i => fields[i]);
+const newFields = [];
+items.forEach(item => {
+const oldIndex = parseInt(item.dataset.index);
+newFields.push(fields[oldIndex]);
+});
+
 fields = newFields;
 renderFields();
 updatePreview();
