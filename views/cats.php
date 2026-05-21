@@ -1,0 +1,11 @@
+<div class="d-flex justify-content-between align-items-center mb-4"><h3 class="fw-bold m-0">🐈 Реестр кошек</h3><button class="btn btn-primary md-btn d-flex align-items-center gap-1" data-bs-toggle="modal" data-bs-target="#addCatModal"><span class="material-icons">add</span> Новая кошка</button></div>
+<div class="row g-4">
+<?php foreach($cats as $cat): $ph=getCatMainPhoto($cat); $st=$cat['status_history']['current']; $is_st=$cat['medical']['sterilization']['done']; $has_v=!empty(array_filter($cat['medical']['procedures'],fn($p)=>$p['type']==='Вакцинация')); ?>
+<div class="col-md-6 col-lg-4"><div class="md-card h-100 d-flex flex-column"><div class="p-3 d-flex gap-3 align-items-start"><div class="md-avatar flex-shrink-0"><?= $ph?"<img src='".escape($ph['path'])."' alt='avatar'>":"<span class='material-icons'>pets</span>" ?></div>
+<div class="flex-grow-1"><div class="d-flex justify-content-between align-items-start mb-1"><h5 class="mb-0 fw-semibold text-truncate"><?= escape($cat['identification']['name']) ?></h5><span class="md-badge md-badge-<?= $st==='adopted'?'adopted':($st==='ready_for_adoption'?'ready':($st==='treatment'?'treatment':'caught')) ?>"><?= CAT_STATUS_LABELS[$st] ?></span></div>
+<div class="small text-muted mb-2"><span class="me-2"><?= $cat['identification']['sex']==='male'?'♂':($cat['identification']['sex']==='female'?'♀':'⚧') ?></span><span class="me-2"><?= escape($cat['identification']['approx_age']?:'—') ?></span></div>
+<div class="d-flex flex-wrap gap-1 mb-2"><span class="info-chip">🎨 <?= escape($cat['identification']['color']?:'—') ?></span><span class="info-chip">📍 <?= escape(substr($cat['identification']['location']?:'Не указано',0,15)).(strlen($cat['identification']['location']?:'')>15?'...':'') ?></span></div>
+<div class="d-flex gap-2 mb-2"><span class="badge rounded-pill <?= $is_st?'bg-success':'bg-secondary bg-opacity-25 text-secondary' ?>"><?= $is_st?'✂️ Стерил.':'Не стерил.' ?></span><span class="badge rounded-pill <?= $has_v?'bg-info text-dark':'bg-secondary bg-opacity-25 text-secondary' ?>"><?= $has_v?'💉 Привита':'Нет прив.' ?></span></div>
+<a href="?action=cat&id=<?= $cat['id'] ?>" class="btn btn-sm btn-outline-primary w-100 md-btn mt-auto">Открыть досье</a></div></div></div></div>
+<?php endforeach; ?>
+</div>

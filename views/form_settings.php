@@ -1,0 +1,6 @@
+<?php $configPath = $FILES['form_config']; $currentConfig = file_exists($configPath) ? file_get_contents($configPath) : '[]'; ?>
+<div class="row justify-content-center"><div class="col-md-8"><h3 class="fw-bold mb-3">⚙️ Конструктор анкеты</h3><div class="md-card p-4"><div class="alert alert-info small"><strong>Важно:</strong> Поля name, phone, address обязательны.</div>
+<?php if(!empty($_SESSION['msg'])): echo "<div class='alert alert-success'>".$_SESSION['msg']."</div>"; unset($_SESSION['msg']); endif; ?>
+<?php if(!empty($_SESSION['err'])): echo "<div class='alert alert-danger'>".$_SESSION['err']."</div>"; unset($_SESSION['err']); endif; ?>
+<form method="POST" action="?action=save_form_config"><textarea name="config_json" class="form-control font-monospace" rows="15"><?= escape($currentConfig) ?></textarea><div class="mt-3 d-flex justify-content-end"><button class="btn btn-primary md-btn px-4">💾 Сохранить</button></div></form></div>
+<div class="md-card p-3 mt-3"><h6>Пример:</h6><pre class="small text-muted bg-light p-2 rounded">[{"id":"has_kids","label":"Есть дети?","type":"select","options":["Да","Нет"],"required":true}]</pre></div></div></div>

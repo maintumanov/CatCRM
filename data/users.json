@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "login": "admin",
+        "pass": "$2y$10$DN\/v9T63071Anu5ZnKusu.XNNjMKfHxZb1XjY4WQvZw5JAO9FyDpO",
+        "role": "admin",
+        "name": "Станислав"
+    },
+    {
+        "id": 2,
+        "login": "marina",
+        "pass": "$2y$10$Liu.lYEnMneQC4VeVxxxLOU4.yKSkhajLs6KOZlp6PBPs4LNhtz0G",
+        "role": "user",
+        "name": "Марина"
+    },
+    {
+        "id": 3,
+        "login": "svetlana",
+        "pass": "$2y$10$v9MohYsIo1EvNwQ3C.ZyGuAHc9FbJrCj7nteZ1748qWwzyT4r\/mQm",
+        "role": "user",
+        "name": "Светлана"
+    }
+]

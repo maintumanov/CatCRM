@@ -1,0 +1,7 @@
+<div class="d-flex justify-content-between align-items-center mb-4"><h3 class="fw-bold m-0">👥 Пользователи</h3><button class="btn btn-primary md-btn" data-bs-toggle="modal" data-bs-target="#addUserModal"><span class="material-icons">person_add</span> Добавить</button></div>
+<div class="md-card p-2 overflow-hidden"><table class="table align-middle mb-0"><thead><tr><th>ID</th><th>Логин</th><th>Имя</th><th>Роль</th><th class="text-end">Действия</th></tr></thead><tbody>
+<?php foreach($users as $u): ?>
+<tr><td class="text-muted"><?= $u['id'] ?></td><td><?= escape($u['login']) ?></td><td><?= escape($u['name']) ?></td><td><span class="badge bg-light text-dark border"><?= $u['role']==='admin'?'Админ':'Пользователь' ?></span></td><td class="text-end">
+<button class="btn btn-sm btn-outline-primary md-btn" data-bs-toggle="modal" data-bs-target="#editUserModal" data-id="<?= $u['id'] ?>" data-login="<?= escape($u['login']) ?>" data-name="<?= escape($u['name']) ?>" data-role="<?= $u['role'] ?>">Ред.</button>
+<?php if($u['id']!==$current_user['id']): ?><form method="POST" action="?action=delete_user" class="d-inline" onsubmit="return confirm('Удалить?')"><input type="hidden" name="user_id" value="<?= $u['id'] ?>"><button class="btn btn-sm btn-outline-danger md-btn">Удалить</button></form><?php endif; ?></td></tr>
+<?php endforeach; ?></tbody></table></div>

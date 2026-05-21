@@ -1,0 +1,14 @@
+[
+    {
+        "id": "o_69ee2a788de4c",
+        "cat_id": "c_cd5186d2",
+        "name": "7",
+        "phone": "8",
+        "address": "9",
+        "status": "new",
+        "application_result": "{\"age\":\"1\",\"employment\":\"Учусь\",\"district\":\"2\",\"floor\":\"3\",\"window_screens\":\"нет\",\"vertical_venting\":\"считаю безопасным для кошек\",\"balcony\":\"нет\",\"housing_type\":\"Частный дом\",\"family_members_count\":\"4\",\"children_ages\":\"5\",\"allergy_exists\":\"да\",\"allergy_management\":\"6\",\"previous_pets\":\"7\",\"current_pets\":\"8\",\"preferred_vet_clinic\":\"9\",\"adoption_purpose\":\"для себя\",\"vacation_care\":\"0\",\"monthly_budget\":\"до 3 тысяч рублей\",\"treatment_budget\":\"1\",\"sterilization_attitude\":\"за стерилизацию кошек, против кастрации котов\",\"stress_tolerance\":\"Буду огорчён\",\"feeding_plan\":\"2\",\"outdoor_access\":\"нет\",\"info_provision\":\"3\",\"previsit_desire\":\"да, хочу посмотреть будущего питомца\",\"delivery_agreement\":\"да\",\"return_promise\":\"5\",\"additional_info\":\"6\",\"name\":\"7\",\"phone\":\"8\",\"address\":\"9\",\"experience\":\"10\",\"conditions\":\"11\"}",
+        "notes": "Заявка с публичной витрины",
+        "created_at": "2026-04-26 18:08:40",
+        "created_by": 0
+    }
+]

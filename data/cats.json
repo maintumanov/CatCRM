@@ -1,0 +1,170 @@
+[
+    {
+        "id": "c_1c6cee7d",
+        "identification": {
+            "name": "Кокос",
+            "species": "cat",
+            "sex": "male",
+            "age_group": "adult",
+            "approx_age": "7-8 лет",
+            "breed": "domestic",
+            "color": "Бежевый",
+            "marks": "хороший кот",
+            "description": "Корм Ренал",
+            "intake_date": "2026-04-26",
+            "location": "",
+            "microchip": ""
+        },
+        "photos": [
+            {
+                "path": "uploads\/c_1c6cee7d\/photo_177719241894.jpg",
+                "caption": "",
+                "is_main": true,
+                "uploaded_at": "2026-04-26 11:33:38"
+            }
+        ],
+        "status_history": {
+            "current": "ready_for_adoption",
+            "log": [
+                {
+                    "status": "caught",
+                    "date": "2026-04-26 11:33:13",
+                    "user_id": 0,
+                    "comment": "Создание карточки"
+                },
+                {
+                    "status": "ready_for_adoption",
+                    "date": "2026-04-26 11:35:28",
+                    "user_id": 1,
+                    "comment": ""
+                }
+            ]
+        },
+        "medical": {
+            "procedures": [],
+            "sterilization": {
+                "done": false,
+                "date": "",
+                "notes": ""
+            },
+            "current_meds": [],
+            "lab_results": []
+        },
+        "behavior": {
+            "people_relation": "",
+            "animals_relation": "",
+            "litter_box": "",
+            "independence": "",
+            "special_needs": ""
+        },
+        "contacts": {
+            "curator_user_id": null,
+            "curator_name": "",
+            "curator_phone": "",
+            "curator_email": "",
+            "finder_name": "",
+            "finder_contacts": ""
+        },
+        "notes": [],
+        "adoption": {
+            "status": "searching",
+            "owner_name": "",
+            "owner_contacts": "",
+            "owner_user_id": null,
+            "homecheck_date": "",
+            "homecheck_result": "",
+            "contract_date": "",
+            "transfer_date": ""
+        }
+    },
+    {
+        "id": "c_cd5186d2",
+        "identification": {
+            "name": "Генка",
+            "species": "cat",
+            "sex": "male",
+            "age_group": "kitten",
+            "approx_age": "2,5 месяца",
+            "breed": "domestic",
+            "color": "черный с белыми пятнами",
+            "marks": "",
+            "description": "Пристраивается одним кошачьим",
+            "intake_date": "2026-04-26",
+            "location": "",
+            "microchip": ""
+        },
+        "photos": [
+            {
+                "path": "uploads\/c_cd5186d2\/photo_177719277298.jpg",
+                "caption": "",
+                "is_main": false,
+                "uploaded_at": "2026-04-26 11:39:32"
+            }
+        ],
+        "status_history": {
+            "current": "ready_for_adoption",
+            "log": [
+                {
+                    "status": "caught",
+                    "date": "2026-04-26 11:38:26",
+                    "user_id": 0,
+                    "comment": "Создание карточки"
+                },
+                {
+                    "status": "ready_for_adoption",
+                    "date": "2026-04-26 11:39:06",
+                    "user_id": 1,
+                    "comment": ""
+                },
+                {
+                    "status": "treatment",
+                    "date": "2026-04-26 17:27:49",
+                    "user_id": 1,
+                    "comment": ""
+                },
+                {
+                    "status": "ready_for_adoption",
+                    "date": "2026-04-26 17:28:10",
+                    "user_id": 1,
+                    "comment": ""
+                }
+            ]
+        },
+        "medical": {
+            "procedures": [],
+            "sterilization": {
+                "done": false,
+                "date": "",
+                "notes": ""
+            },
+            "current_meds": [],
+            "lab_results": []
+        },
+        "behavior": {
+            "people_relation": "",
+            "animals_relation": "",
+            "litter_box": "",
+            "independence": "",
+            "special_needs": ""
+        },
+        "contacts": {
+            "curator_user_id": null,
+            "curator_name": "",
+            "curator_phone": "",
+            "curator_email": "",
+            "finder_name": "",
+            "finder_contacts": ""
+        },
+        "notes": [],
+        "adoption": {
+            "status": "searching",
+            "owner_name": "",
+            "owner_contacts": "",
+            "owner_user_id": null,
+            "homecheck_date": "",
+            "homecheck_result": "",
+            "contract_date": "",
+            "transfer_date": ""
+        }
+    }
+]

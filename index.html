@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="1;url=public.php">
+    <title>Перенаправление | Каждому по коту... и не по одному!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1976d2 0%, #42a5f5 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Roboto', sans-serif;
+            color: white;
+            margin: 0;
+        }
+        .redirect-card {
+            background: rgba(255, 255, 255, 0.95);
+            color: #212529;
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            max-width: 420px;
+            width: 90%;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+        .loader {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e9ecef;
+            border-top-color: #1976d2;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 1rem auto;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <div class="redirect-card">
+        <h2 class="fw-bold mb-2">🐱 Каждому по коту... и не по одному!</h2>
+        <p class="text-muted mb-3">Перенаправляем вас на витрину питомцев...</p>
+        <div class="loader"></div>
+        <p class="small text-muted mb-3">Если переход не произошел автоматически:</p>
+        <a href="public.php" class="btn btn-primary w-100 fw-medium shadow-sm">Открыть портал</a>
+    </div>
+
+    <script>
+        // Резервный JS-редирект с очисткой истории (чтобы кнопка "Назад" не зацикливала)
+        window.setTimeout(() => {
+            window.location.replace('public.php');
+        }, 800);
+    </script>
+</body>
+</html>
