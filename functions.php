@@ -29,6 +29,52 @@ function newCatTemplate($id) {
 }
 
 function getCatMainPhoto($cat) { foreach($cat['photos'] as $p) if($p['is_main']) return $p; return !empty($cat['photos']) ? $cat['photos'][0] : null; }
+
+function calculateCatAge($cat) {
+    $intakeDate = $cat['identification']['intake_date'] ?? '';
+    $approxAge = $cat['identification']['approx_age'] ?? '';
+    
+    if (empty($intakeDate)) {
+        return $approxAge ?: 'Не указан';
+    }
+    
+    $intakeDateTime = new DateTime($intakeDate);
+    $now = new DateTime();
+    $interval = $now->diff($intakeDateTime);
+    
+    $yearsSinceIntake = $interval->y;
+    $monthsSinceIntake = $interval->m;
+    
+    // Парсим примерный возраст на момент поимки
+    $initialYears = 0;
+    $initialMonths = 0;
+    
+    if (preg_match('/(\d+)\s*год/iu', $approxAge, $matches)) {
+        $initialYears = (int)$matches[1];
+    }
+    if (preg_match('/(\d+)\s*мес/iu', $approxAge, $matches)) {
+        $initialMonths = (int)$matches[1];
+    } elseif (preg_match('/(\d+)\s*месяц/iu', $approxAge, $matches)) {
+        $initialMonths = (int)$matches[1];
+    }
+    
+    // Складываем возраст
+    $totalMonths = ($yearsSinceIntake * 12) + $monthsSinceIntake + ($initialYears * 12) + $initialMonths;
+    
+    $finalYears = intdiv($totalMonths, 12);
+    $finalMonths = $totalMonths % 12;
+    
+    $result = [];
+    if ($finalYears > 0) {
+        $result[] = "$finalYears " . ($finalYears == 1 ? 'год' : ($finalYears >= 2 && $finalYears <= 4 ? 'года' : 'лет'));
+    }
+    if ($finalMonths > 0) {
+        $result[] = "$finalMonths " . ($finalMonths == 1 ? 'месяц' : ($finalMonths >= 2 && $finalMonths <= 4 ? 'месяца' : 'месяцев'));
+    }
+    
+    return empty($result) ? 'Не указан' : implode(' ', $result);
+}
+
 function getStats($cats, $tasks) {
     $stats = ['total_cats'=>count($cats),'adopted'=>0,'ready_for_adoption'=>0,'treatment'=>0,'caught'=>0,'tasks_new'=>0,'tasks_prog'=>0,'tasks_done'=>0];
     foreach($cats as $c) { $st=$c['status_history']['current']; if(isset($stats[$st])) $stats[$st]++; }
