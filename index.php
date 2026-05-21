@@ -43,11 +43,9 @@ if ($action === 'login' || empty($_SESSION['user_id'])) {
         case 'owners': require 'views/owners.php'; break;
         case 'finances': require 'views/finances.php'; break;
         case 'add_task': require 'views/add_task.php'; break;
+        case 'task': require 'views/task_edit.php'; break;
         case 'users': require 'views/users.php'; break;
         case 'form_settings': require 'views/form_settings.php'; break;
-		case 'my_tasks': require 'views/my_tasks.php'; break;
-		case 'task': require 'views/task_edit.php'; break; // <-- ДОБАВИТЬ ЭТУ СТРОКУ
-		case 'calendar': require 'views/calendar.php'; break;
         default: echo '<div class="md-card p-5 text-center"><a href="?action=dashboard" class="btn btn-primary md-btn px-4">Вернуться</a></div>';
     }
 }
